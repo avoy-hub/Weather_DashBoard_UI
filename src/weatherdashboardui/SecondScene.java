@@ -30,7 +30,7 @@ public class SecondScene {
         // Scene
         Scene scene2 = new Scene(root, 300, 400);
 
-//        // Button Action -> ThirdScene এ যাবে
+//        // Button Action -> ThirdScene
 //        submitBtn.setOnAction(e -> {
 //            ThirdScene third = new ThirdScene();
 //            third.start(stage);
