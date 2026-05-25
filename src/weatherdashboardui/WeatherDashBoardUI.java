@@ -36,11 +36,10 @@ public class WeatherDashBoardUI extends Application {
         root.getChildren().addAll(title,city,temp,humidity,condition,wind,cityField,searchBtn);
         Scene scene1=new Scene(root,300,400);
          searchBtn.setOnAction(e -> {
-
             String newCity =cityField.getText();
-
-
-        });
+            SecondScene second=new SecondScene();
+            second.start(stage,newCity);
+});
            stage.setTitle("Weather Dashboard");
 
         stage.setScene(scene1);
