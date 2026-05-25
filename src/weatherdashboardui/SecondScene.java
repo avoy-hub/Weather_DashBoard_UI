@@ -1,4 +1,4 @@
-package WeatherDashBoardUI;
+package weatherdashboardui;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
