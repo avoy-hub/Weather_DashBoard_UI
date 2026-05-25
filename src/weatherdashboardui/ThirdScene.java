@@ -10,8 +10,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 // Child Class
-public class ThirdScene{
+public class ThirdScene extends WeatherDashBoardUI {
 
+    @Override
     public void start(Stage stage) {
 
         Label title = new Label("Bangladesh Weather Dashboard");
@@ -62,5 +63,9 @@ public class ThirdScene{
         stage.setScene(scene);
 
         stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

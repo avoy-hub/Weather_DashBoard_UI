@@ -1,4 +1,4 @@
-package weatherdashboardui;
+package WeatherDashBoardUI;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -30,11 +30,11 @@ public class SecondScene {
         // Scene
         Scene scene2 = new Scene(root, 300, 400);
 
-    //    Button Action -> ThirdScene
-        submitBtn.setOnAction(e -> {
-            ThirdScene third = new ThirdScene();
-            third.start(stage);
-        });
+//        // Button Action -> ThirdScene
+//        submitBtn.setOnAction(e -> {
+//            ThirdScene third = new ThirdScene();
+//            third.start(stage);
+//        });
 
         stage.setScene(scene2);
         stage.show();
