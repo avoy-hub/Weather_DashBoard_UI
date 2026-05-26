@@ -44,6 +44,7 @@ public class ThirdScene extends WeatherDashBoardUI {
         );
         Scene scene = new Scene(root, 400, 500);
 
+        
         stage.setTitle("Weather Dashboard");
         stage.setScene(scene);
         stage.show();
