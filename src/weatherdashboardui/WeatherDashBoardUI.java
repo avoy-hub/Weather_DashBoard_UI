@@ -1,6 +1,6 @@
 
 package weatherdashboardui;
-
+import com.google.gson.Gson;
 import javafx.scene.control.Label;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -23,19 +23,50 @@ public class WeatherDashBoardUI extends Application {
         Label title=new Label("Weather Update");
         title.setStyle("-fx-font-size:25px;"+"-fx-font-weight:bold;");
         
-        Label city=new Label("Saidpur");
+        Label city=new Label();
         city.setStyle("-fx-font-size:22px;"+"-fx-font-weight:bold;");
-          Label temp =new Label("Temperature : 30°C");
-          temp.setStyle("-fx-font-size:40px;"+"-fx-font-weight:bold;"+"-fx-text-fill:darkblue");
+          Label temp =new Label();
+          temp.setStyle("-fx-font-size:35px;"+"-fx-font-weight:bold;"+"-fx-text-fill:darkblue");
 
-        Label humidity =new Label("Humidity : 75%");
+        Label humidity =new Label();
         humidity.setStyle("-fx-font-size:20px;"+"-fx-font-weight:bold;"+"-fx-text-fill:green");
 
-        Label condition = new Label("Condition : Cloudy");
+        Label condition = new Label();
         condition.setStyle("-fx-font-size:20px;"+"-fx-font-weight:bold;"+"-fx-text-fill:purple");
 
-        Label wind =new Label("Wind Speed : 12 km/h");
+        Label wind =new Label();
         wind.setStyle("-fx-font-size:20px;"+"-fx-font-weight:bold;"+"-fx-text-fill:brown");
+         String json = WeatherService.getWeather("Saidpur");
+         System.out.println(json);
+        
+
+        Gson gson = new Gson();
+
+        WeatherResponse data =
+                gson.fromJson(json, WeatherResponse.class);
+
+        
+        city.setText(data.name);
+
+        temp.setText(
+                "Temperature : "
+                + data.main.temp + "°C"
+        );
+
+        humidity.setText(
+                "Humidity : "
+                + data.main.humidity + "%"
+        );
+
+        condition.setText(
+                "Condition : "
+                + data.weather[0].main
+        );
+
+        wind.setText(
+                "Wind Speed : "
+                + data.wind.speed + " km/h"
+        );
 
         TextField cityField=new TextField();
         cityField.setPromptText("Enter new city:");
