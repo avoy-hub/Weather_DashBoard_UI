@@ -1,5 +1,6 @@
 package weatherdashboardui;
 
+import com.google.gson.Gson;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,9 +12,9 @@ public class SecondScene {
 
     public void start(Stage stage, String cityName) {
 
-       // Title
+        // Title
         Label title = new Label("City Weather");
-        
+
         title.setStyle(
                 "-fx-font-size:25px;"
                 + "-fx-font-weight:bold;"
@@ -59,25 +60,84 @@ public class SecondScene {
                 + "-fx-text-fill:brown;"
         );
 
+        // API CALL
+        String json =
+                WeatherService.getWeather(cityName);
+
+        Gson gson = new Gson();
+
+        WeatherResponse data =
+                gson.fromJson(json, WeatherResponse.class);
+
+        // UI UPDATE
+        city.setText(
+                "City : " + data.name
+        );
+
+        temp.setText(
+                "Temperature : "
+                + Math.round(data.main.temp)
+                + "°C"
+        );
+
+        humidity.setText(
+                "Humidity : "
+                + data.main.humidity + "%"
+        );
+
+        condition.setText(
+                "Condition : "
+                + data.weather[0].main
+        );
+
+        wind.setText(
+                "Wind Speed : "
+                + data.wind.speed + " km/h"
+        );
 
         // Button
         Button submitBtn = new Button("Submit");
 
+        submitBtn.setStyle(
+                "-fx-background-color:green;"
+                + "-fx-text-fill:white;"
+                + "-fx-font-size:15px;"
+        );
+
         // Layout
-        VBox root = new VBox(10);
+        VBox root = new VBox(20);
+
         root.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(title, city, temp, humidity, condition, wind, submitBtn);
+
+        root.setStyle(
+                "-fx-background-color:linear-gradient(to bottom, #74b9ff, #dfe6e9);"
+                + "-fx-padding:30;"
+        );
+
+        root.getChildren().addAll(
+                title,
+                city,
+                temp,
+                humidity,
+                condition,
+                wind,
+                submitBtn
+        );
 
         // Scene
-        Scene scene2 = new Scene(root, 300, 400);
+        Scene scene2 = new Scene(root, 450, 650);
 
-        // Button Action -> ThirdScene
+        // Button Action
         submitBtn.setOnAction(e -> {
+
             ThirdScene third = new ThirdScene();
+
             third.start(stage);
+
         });
 
         stage.setScene(scene2);
+
         stage.show();
     }
 }
