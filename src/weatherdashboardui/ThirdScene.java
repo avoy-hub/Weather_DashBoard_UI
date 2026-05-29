@@ -7,9 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 // Child Class
-public class ThirdScene extends WeatherDashBoardUI {
-
-    @Override
+public class ThirdScene {
     public void start(Stage stage) {
 
         Label title = new Label("Bangladesh Weather Dashboard");

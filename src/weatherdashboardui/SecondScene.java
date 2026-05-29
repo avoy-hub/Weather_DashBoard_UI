@@ -11,13 +11,54 @@ public class SecondScene {
 
     public void start(Stage stage, String cityName) {
 
-        // Labels
+       // Title
         Label title = new Label("City Weather");
-        Label city = new Label("City : " + cityName);
-        Label temp = new Label("Temperature : -- °C");
-        Label humidity = new Label("Humidity : -- %");
-        Label condition = new Label("Condition : --");
-        Label wind = new Label("Wind Speed : -- m/s");
+        
+        title.setStyle(
+                "-fx-font-size:25px;"
+                + "-fx-font-weight:bold;"
+        );
+
+        // Labels
+        Label city = new Label();
+
+        city.setStyle(
+                "-fx-font-size:22px;"
+                + "-fx-font-weight:bold;"
+        );
+
+        Label temp = new Label();
+
+        temp.setStyle(
+                "-fx-font-size:35px;"
+                + "-fx-font-weight:bold;"
+                + "-fx-text-fill:darkblue;"
+        );
+
+        Label humidity = new Label();
+
+        humidity.setStyle(
+                "-fx-font-size:20px;"
+                + "-fx-font-weight:bold;"
+                + "-fx-text-fill:green;"
+        );
+
+        Label condition = new Label();
+
+        condition.setStyle(
+                "-fx-font-size:20px;"
+                + "-fx-font-weight:bold;"
+                + "-fx-text-fill:purple;"
+        );
+
+        Label wind = new Label();
+
+        wind.setStyle(
+                "-fx-font-size:20px;"
+                + "-fx-font-weight:bold;"
+                + "-fx-text-fill:brown;"
+        );
+
 
         // Button
         Button submitBtn = new Button("Submit");
