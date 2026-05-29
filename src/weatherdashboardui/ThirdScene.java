@@ -1,5 +1,6 @@
 package weatherdashboardui;
 
+import com.google.gson.Gson;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -8,41 +9,93 @@ import javafx.stage.Stage;
 
 // Child Class
 public class ThirdScene {
+
     public void start(Stage stage) {
 
+        // Title
         Label title = new Label("Bangladesh Weather Dashboard");
 
-        Label dhaka = new Label("Dhaka : 30°C");
-        Label rangpur = new Label("Rangpur : 28°C");
-        Label khulna = new Label("Khulna : 31°C");
-        Label chittagong = new Label("Chittagong : 29°C");
-        Label sylhet = new Label("Sylhet : 27°C");
-        Label rajshahi = new Label("Rajshahi : 32°C");
-        Label barisal = new Label("Barisal : 30°C");
-        Label mymensingh = new Label("Mymensingh : 28°C");
+        title.setStyle(
+                "-fx-font-size:25px;"
+                + "-fx-font-weight:bold;"
+        );
 
+        // Layout
+        VBox root = new VBox(15);
+
+        root.setAlignment(Pos.CENTER);
+
+        root.setStyle(
+                "-fx-background-color:linear-gradient(to bottom, #74b9ff, #dfe6e9);"
+                + "-fx-padding:30;"
+        );
+
+        // Add Title
+        root.getChildren().add(title);
+
+        // Cities
+        String[] cities = {
+                "Dhaka",
+                "Rangpur",
+                "Khulna",
+                "Chittagong",
+                "Sylhet",
+                "Rajshahi",
+                "Barisal",
+                "Mymensingh"
+        };
+
+        Gson gson = new Gson();
+
+        // LOOP
+        for (String cityName : cities) {
+
+            // API CALL
+            String json =
+                    WeatherService.getWeather(cityName);
+
+            // JSON -> OBJECT
+            WeatherResponse data =
+                    gson.fromJson(
+                            json,
+                            WeatherResponse.class
+                    );
+
+            // Weather Label
+            Label weatherLabel = new Label(
+
+                    data.name
+                    + " : "
+                    + Math.round(data.main.temp)
+                    + "°C"
+            );
+
+            weatherLabel.setStyle(
+                    "-fx-font-size:20px;"
+                    + "-fx-font-weight:bold;"
+                    + "-fx-text-fill:darkblue;"
+            );
+
+            // Add Label
+            root.getChildren().add(weatherLabel);
+        }
+
+        // Summary
         Label summary = new Label(
                 "Summary: Bangladesh weather is mostly warm with scattered clouds across all divisions."
         );
 
-        VBox root = new VBox(10);
-        root.setAlignment(Pos.CENTER);
-
-        root.getChildren().addAll(
-                title,
-                dhaka,
-                rangpur,
-                khulna,
-                chittagong,
-                sylhet,
-                rajshahi,
-                barisal,
-                mymensingh,
-                summary
+        summary.setStyle(
+                "-fx-font-size:15px;"
+                + "-fx-font-weight:bold;"
         );
+
+        root.getChildren().add(summary);
+
+        // Scene
         Scene scene = new Scene(root, 400, 500);
-//sample test
-        
+
+        // Stage
         stage.setTitle("Weather Dashboard");
         stage.setScene(scene);
         stage.show();
