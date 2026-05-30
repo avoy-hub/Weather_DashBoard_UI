@@ -76,7 +76,7 @@ public class SecondScene {
 
         temp.setText(
                 "Temperature : "
-                + Math.round(data.main.temp)
+                + data.main.temp
                 + "°C"
         );
 
