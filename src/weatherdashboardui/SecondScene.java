@@ -76,7 +76,7 @@ public class SecondScene {
 
         temp.setText(
                 "Temperature : "
-                + data.main.temp
+                + Math.round(data.main.temp)
                 + "°C"
         );
 
@@ -109,10 +109,10 @@ public class SecondScene {
 
         root.setAlignment(Pos.CENTER);
 
-        root.setStyle(
-                "-fx-background-color:linear-gradient(to bottom, #74b9ff, #dfe6e9);"
-                + "-fx-padding:30;"
-        );
+ root.setStyle(
+    "-fx-background-color:linear-gradient(to bottom, #89F7FE, #66A6FF);"
+    + "-fx-padding:30;"
+);
 
         root.getChildren().addAll(
                 title,
