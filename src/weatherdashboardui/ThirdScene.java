@@ -104,7 +104,7 @@ public class ThirdScene {
         citiesBox.setAlignment(Pos.CENTER);
         citiesBox.setStyle(
                 "-fx-background-color:#f1fff1;" +
-                "-fx-padding:15;" +
+                "-fx-padding:25;" +
                 "-fx-background-radius:20;"
         );
 
@@ -123,7 +123,7 @@ public class ThirdScene {
                 "-fx-padding:20;"
         );
 
-        Scene scene = new Scene(root, 400, 360);
+        Scene scene = new Scene(root, 450, 750);
 
         stage.setTitle("Weather Dashboard");
         stage.setScene(scene);
