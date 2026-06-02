@@ -74,7 +74,7 @@ public class WeatherDashBoardUI extends Application {
         Button searchBtn=new Button("Search");
         VBox root=new VBox(20);
         root.setAlignment(Pos.CENTER);
-        root.setStyle("-fx-background-color:linear-gradient(to bottom, #74b9ff, #dfe6e9);"+"-fx-padding:30;");
+        root.setStyle("-fx-background-color:linear-gradient(to bottom, #74b9ff, #dfe6e9);"+"-fx-padding:20;");
         searchBtn.setStyle("-fx-background-color:green;"+"-fx-text-fill:white;");
         DropShadow shadow=new DropShadow();
         shadow.setRadius(15);
